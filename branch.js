@@ -27,7 +27,7 @@ class Branch {
     this.branches = [];
     this.weight = weight;
 
-    if (this.gen < 8 && ! (this.gen > 4 && random() < 0.3)) {
+    if (this.gen < 10) {
       let splitAmount = random(2, 7);
       if (splitAmount % 2 === 1) {
         splitAmount -= 1;
@@ -44,6 +44,9 @@ class Branch {
    */
   split(amount) {
     for (let index = 1; index <= amount; index++) {
+      if (this.gen > 4 && random() > 0.7) {
+        return;
+      }
       const branchAngle = index <= amount / 2 ? index : amount - index + 1;
       this.createBranch(pow(-1, index) * (PI / 4) / branchAngle);
     }
@@ -57,7 +60,7 @@ class Branch {
    */
   createBranch(angle) {
     push();
-    let newBranch = new Branch(this.end, this.len * random(0.4, 0.9), this.angle - angle, this.gen + 1, this.weight - 0.5);
+    let newBranch = new Branch(this.end, this.len * random(0.4, 0.9), this.angle - angle, this.gen + 1, this.weight - 0.4);
     this.branches.push(newBranch);
     newBranch.draw();
     pop();

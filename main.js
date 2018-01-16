@@ -16,7 +16,7 @@ function setup() {
  */
 function draw() {
   background(236, 240, 241);
-  stroke('rgba(22, 160, 133, 0.7)');
+  stroke('rgba(22, 160, 133, 0.4)');
   push();
   for (let index = 1; index <= amount; index++) {
     push();
